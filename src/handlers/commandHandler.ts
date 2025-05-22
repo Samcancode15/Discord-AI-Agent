@@ -1,12 +1,7 @@
 import { Message } from "discord.js";
 import fs from "fs";
 import path from "path";
-
-export interface Command {
-  name: string;
-  description: string;
-  execute: (...args: any[]) => Promise<void> | void;
-}
+import { Command } from "@/types/types";
 
 const commands = new Map<string, Command>();
 

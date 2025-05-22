@@ -1,6 +1,7 @@
+import { Command } from "@/types/types";
 import { Message } from "discord.js";
 
-const pingCommand = {
+const pingCommand: Command = {
   name: "ping",
   description: "Replies with Pong!",
   execute: async (args: string[], message: Message) => {
