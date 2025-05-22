@@ -5,19 +5,30 @@ import { Command } from "@/types/types";
 
 const commands = new Map<string, Command>();
 
-export function loadCommands() {
-  const commandsPath = path.join(__dirname, "../commands");
-  const files = fs.readdirSync(commandsPath);
+const commandsPath = path.join(__dirname, "../commands");
 
-  for (const file of files) {
-    if (file.endsWith(".ts") || file.endsWith(".js")) {
-      const command: Command = require(path.join(commandsPath, file)).default;
-      commands.set(command.name, command);
+function loadCommandsFromDir(dir: string) {
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+
+    if (entry.isDirectory()) {
+      loadCommandsFromDir(fullPath);
+    } else if (
+      entry.isFile() &&
+      (entry.name.endsWith(".ts") || entry.name.endsWith(".js"))
+    ) {
+      const imported = require(fullPath);
+      const command: Command = imported.default ?? imported;
+      if (command?.name) {
+        commands.set(command.name, command);
+      }
     }
   }
 }
 
-loadCommands();
+loadCommandsFromDir(commandsPath);
 
 export default async function handleCommand(
   name: string,
