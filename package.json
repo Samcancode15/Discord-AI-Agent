@@ -1,0 +1,21 @@
+{
+  "name": "discord-ai-agent",
+  "version": "1.0.0",
+  "description": "An AI-powered Discord bot that interprets natural language commands and maps them to actual Discord actions using function-calling and a dispatcher.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Samcancode15/Discord-AI-Agent.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Samcancode15/Discord-AI-Agent/issues"
+  },
+  "homepage": "https://github.com/Samcancode15/Discord-AI-Agent#readme"
+}
