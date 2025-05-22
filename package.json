@@ -4,7 +4,9 @@
   "description": "An AI-powered Discord bot that interprets natural language commands and maps them to actual Discord actions using function-calling and a dispatcher.",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "start": "tsc && ts-node -r tsconfig-paths/register src/index.ts",
+    "clean": "rimraf dist"
   },
   "repository": {
     "type": "git",
@@ -17,5 +19,10 @@
   "bugs": {
     "url": "https://github.com/Samcancode15/Discord-AI-Agent/issues"
   },
-  "homepage": "https://github.com/Samcancode15/Discord-AI-Agent#readme"
+  "homepage": "https://github.com/Samcancode15/Discord-AI-Agent#readme",
+  "devDependencies": {
+    "@types/node": "^22.15.21",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
 }
